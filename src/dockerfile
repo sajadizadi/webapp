@@ -7,7 +7,7 @@ COPY package*.json /usr/src/app/
 RUN --mount=type=secret,mode=0644,id=npmrc,target=/usr/src/app/.npmrc npm install --only=production
  
 # --------------> The production image
-FROM node:16.17.0-bullseye-slim
+FROM node:16.17.0-alpine
 
 ENV NODE_ENV production
 COPY --from=build /usr/bin/dumb-init /usr/bin/dumb-init
