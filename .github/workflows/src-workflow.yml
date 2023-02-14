@@ -5,8 +5,8 @@ on:
     branches:
       - dit1
       - sit1
-    paths:
-    - 'src/**'
+    #paths:
+    #- 'src/**'
 jobs:
   Make-Image:
     env:
