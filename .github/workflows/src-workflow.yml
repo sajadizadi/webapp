@@ -37,6 +37,7 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
         run: |
           aws ecr create-repository --repository-name $REPOSITORY || true
+          cd src
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 #aws ecr describe-repositories --repository-names ${REPO_NAME} || aws ecr create-repository --repository-name ${REPO_NAME}
