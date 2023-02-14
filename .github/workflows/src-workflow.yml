@@ -5,8 +5,8 @@ on:
     branches:
       - dit1
       - sit1
-    #paths:
-    #- 'src/**'
+    paths:
+    - 'src/**'
 jobs:
   Make-Image:
     env:
@@ -35,6 +35,7 @@ jobs:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: ${{ github.event.repository.name }}
           IMAGE_TAG: ${{ github.sha }}
+          DOCKER_BUILDKIT: 1
         run: |
           aws ecr create-repository --repository-name $REPOSITORY || true
           cd src
