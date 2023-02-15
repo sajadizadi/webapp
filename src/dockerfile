@@ -1,13 +1,13 @@
 FROM building5/dumb-init:1.2.1 as init
 
-# --------------> The build image
+# The build image
 FROM node:latest AS build
 RUN apt-get update && apt-get install -y --no-install-recommends dumb-init
 WORKDIR /usr/src/app
 COPY package*.json /usr/src/app/
 RUN --mount=type=secret,mode=0644,id=npmrc,target=/usr/src/app/.npmrc npm install --only=production
  
-# --------------> The production image
+# The production image
 FROM node:16.17.0-alpine
 
 ENV NODE_ENV production
