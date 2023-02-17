@@ -7,7 +7,7 @@ on:
       - sit1
     #paths:
     #- 'src/**'
-jobs:
+jobs: 
   Make-Image:
     uses: sajadizadi/infra-common-assets/.github/workflows/reusable-build-docker-image.yaml@main
     #env:
