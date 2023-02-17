@@ -9,7 +9,7 @@ on:
     - 'src/**'
 jobs:
   Make-Image:
-    uses: sajadizadi/infra-common-assets/.github/workflows/reusables/build-docker-image.yaml@main
+    uses: sajadizadi/infra-common-assets/.github/workflows/reusable-build-docker-image.yaml@main
     #env:
       #PYTHON_VERSION: "3.10"
     #runs-on: ubuntu-latest
