@@ -5,8 +5,8 @@ on:
     branches:
       - dit1
       - sit1
-    paths:
-    - 'src/**'
+    #paths:
+    #- 'src/**'
 jobs:
   Make-Image:
     uses: sajadizadi/infra-common-assets/.github/workflows/reusable-build-docker-image.yaml@main
