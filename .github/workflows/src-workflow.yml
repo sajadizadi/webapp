@@ -9,44 +9,11 @@ on:
     - 'src/**'
 jobs:
   Make-Image:
-    env:
-      PYTHON_VERSION: "3.10"
-    runs-on: ubuntu-latest
+    uses: sajadizadi/infra-common-assets/workflows/build-docker-image.yaml@main
+    #env:
+      #PYTHON_VERSION: "3.10"
+    #runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: write
-    steps:
-      - name: Check out this repository code
-        uses: actions/checkout@v3
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-region: ca-central-1
-          role-to-assume: arn:aws:iam::782042535526:role/girhub-role
-          role-session-name: MySessionName
-      
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-
-      - name: Prepare Vars
-        id: vars
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-
-      - name: Build, tag, and push docker image to Amazon ECR
-        env:
-          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          REPOSITORY: ${{ github.event.repository.name }}
-          IMAGE_TAG: ${{ steps.vars.outputs.sha_short }}
-          DOCKER_BUILDKIT: 1
-        run: |
-          aws ecr create-repository --repository-name $REPOSITORY || true
-          cd src
-          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
-#aws ecr describe-repositories --repository-names ${REPO_NAME} || aws ecr create-repository --repository-name ${REPO_NAME}
-#aws ecr create-repository --repository-name <repo_name> || true
-
-
-          
+    
