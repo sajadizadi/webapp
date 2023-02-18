@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapp
-  namespace: branch
+  namespace: dit1
   labels:
     app: webapp
 spec:
@@ -18,15 +18,11 @@ spec:
   template:
     metadata:
       labels:
-        app:  webapp
+        app: webapp
     spec:
-      # initContainers:
-        # Init containers are exactly like regular containers, except:
-          # - Init containers always run to completion.
-          # - Each init container must complete successfully before the next one starts.
       containers:
-      - name:  webapp
-        image:  webapp:latest
+      - name: webapp
+        image: 782042535526.dkr.ecr.ca-central-1.amazonaws.com/webapp:1291ab7
         resources:
           requests:
             cpu: 100m
@@ -42,29 +38,8 @@ spec:
           successThreshold: 1
           failureThreshold: 3
           periodSeconds: 10
-        # readinessProbe:
-        #   httpGet:
-        #     path: /_status/healthz
-        #     port: 80
-        #   initialDelaySeconds: 5
-        #   timeoutSeconds: 2
-        #   successThreshold: 1
-        #   failureThreshold: 3
-        #   periodSeconds: 10
-        # env:
-        # - name: DB_HOST
-        #   valueFrom:
-        #     configMapKeyRef:
-        #       name: MYAPP
-        #       key: DB_HOST
         ports:
-        - containerPort:  80
-          name:  http
-        # volumeMounts:
-        # - name: localtime
-        #   mountPath: /etc/localtime
-      # volumes:
-      #   - name: localtime
-      #     hostPath:
-      #       path: /usr/share/zoneinfo/Asia/Shanghai
+        - containerPort: 80
+          name: http
       restartPolicy: Always
+
