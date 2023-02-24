@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: 782042535526.dkr.ecr.ca-central-1.amazonaws.com/webapp:66063e4
+        image: 782042535526.dkr.ecr.ca-central-1.amazonaws.com/webapp:30b429d
         resources:
           requests:
             cpu: 100m
