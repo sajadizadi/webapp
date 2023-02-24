@@ -32,14 +32,14 @@ spec:
             memory: 100Mi
         livenessProbe:
           tcpSocket:
-            port: 80
+            port: 8080
           initialDelaySeconds: 5
           timeoutSeconds: 5
           successThreshold: 1
           failureThreshold: 3
           periodSeconds: 10
         ports:
-        - containerPort: 80
+        - containerPort: 8080
           name: http
       restartPolicy: Always
 
