@@ -38,6 +38,16 @@ spec:
           successThreshold: 1
           failureThreshold: 3
           periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            #path: /_status/healthz
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          timeoutSeconds: 2
+          successThreshold: 1
+          failureThreshold: 3
+          periodSeconds: 10
         ports:
         - containerPort: 8080
           name: http
