@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: 782042535526.dkr.ecr.ca-central-1.amazonaws.com/webapp:4b5301b
+        image: 782042535526.dkr.ecr.ca-central-1.amazonaws.com/webapp:0538abd
         resources:
           requests:
             cpu: 100m
@@ -40,7 +40,6 @@ spec:
           periodSeconds: 10
         readinessProbe:
           httpGet:
-            #path: /_status/healthz
             path: /
             port: 80
           initialDelaySeconds: 5
