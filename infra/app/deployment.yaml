@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: 782042535526.dkr.ecr.ca-central-1.amazonaws.com/webapp:4216ff5
+        image: 782042535526.dkr.ecr.ca-central-1.amazonaws.com/webapp:8c51bab
         resources:
           requests:
             cpu: 100m
@@ -40,7 +40,7 @@ spec:
           periodSeconds: 10
         readinessProbe:
           httpGet:
-            path: /process
+            path: /
             port: 8080
           initialDelaySeconds: 5
           timeoutSeconds: 2
