@@ -2,7 +2,7 @@ name: Source Build Image
 run-name: Running for ${{ github.event.head_commit.message }} 🎅
 on:
   workflow_dispatch:
-  push:
+  pull_request:
     branches:
       - dit1
       - sit1
